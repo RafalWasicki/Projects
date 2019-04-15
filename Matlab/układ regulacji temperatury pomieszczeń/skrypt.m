@@ -1,4 +1,5 @@
 close all
+clear all
 rodzaj = input('Czy pomieszczenia maj¹ byæ takie same? (1 - TAK)');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % WARTOSCI NOMINALNE
@@ -10,7 +11,7 @@ cpp=1000;
 cps=880;
 row=960;
 rop=1.2;
-ros=1800;
+ros=800;
 TzewN=-20;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % POMIESZCZENIE II
@@ -20,7 +21,7 @@ if rodzaj == 1
     Tgz2_N=90;
     Tgp2_N=70;
     Ts2_N=5;
-    qg2_N=2*1000;
+    qg2_N=1*1000;
 else
 %     Twew2_N=input('Podaj wartosc nominalna Twew 2 pomieszczenia (20)');
 %     Tgz2_N=input('Podaj wartosc nominalna Tgz 2 pomieszczenia (90)');
@@ -31,7 +32,7 @@ else
     Tgz2_N=90;
     Tgp2_N=70;
     Ts2_N=4;
-    qg2_N=2*1000;
+    qg2_N=1*1000;
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % POMIESZCZENIE I
@@ -40,7 +41,7 @@ Twew1_N=20;
 Tgz1_N=90;
 Tgp1_N=70;
 Ts1_N=5;
-qg1_N=2*1000;
+qg1_N=1*1000;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % WYMIENNIK
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -54,22 +55,22 @@ qwN=qg1_N+qg2_N;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % POMIESZCZENIE I
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Vw1=4*5*2.5;
+Vw1=5*4*2;
 Cvw1=cpp*rop*Vw1;
-Vg1=1*0.20*0.5;
+Vg1=0.01; %10 litrow
 Cvg1=cpw*row*Vg1;
-Vs1=5.5*4.5*3-Vw1;
+Vs1=5.2*4.2*2.2-Vw1;
 Cvs1=cps*ros*Vs1;
 Kcg1=qg1_N/(Tgp1_N-Twew1_N);
 Kcw1=qg1_N/(Twew1_N-Ts1_N);
 Kcs1=qg1_N/(Ts1_N-TzewN);
-fmg1_N=qg1_N/(Tgz1_N-Tgp1_N)/cpw;
+fmg1_N=qg1_N/((Tgz1_N-Tgp1_N)*cpw);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % POMIESZCZENIE II
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Vw2=Vw1;
 Cvw2=cpp*rop*Vw2;
-Vg2=1*0.20*0.5;
+Vg2=0.01; %10litrow
 Cvg2=cpw*row*Vg2;
 Vs2=Vs1;
 Cvs2=cps*ros*Vs2;
@@ -80,9 +81,9 @@ fmg2_N=qg2_N/(Tgz2_N-Tgp2_N)/cpw;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % WYMIENNIK
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Vv=2*1*0.20*0.5;
+Vv=0.02; %14 litrów
 fmwN=qwN/(cpw*(TwzN-TwpN));
-fm0N=qwN/(cpw*(TwzN-TwpN));
+fm0N=qwN/(cpw*(TozN-TopN));
 Kco=qwN/(TwpN-TozN);
 Cv01=cpw*row*Vv;
 Cv02=cpw*row*Vv;
@@ -145,23 +146,27 @@ Twp0=(C1*Twz0+Kco*Toz0)/(C1+Kco);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % WARTOSCI ZADANE DO SYMULACJI
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+k3 = 101.9744;
+T3 = 225640;
+T30 = 11500;
+
 kp = 0.9 * T3 /(k3*T30);
 Ti =3.33*T30;
 ki= kp/Ti;
 
 czas=1000000;
-steptime=czas*10^(-2);
+steptime=czas*3*10^(-2);
 dTwz=0;
 dTop=0;
-dfmw=0;
+dfmw=0.2*fmw0;
 dfmo=0;
 dTzew=0;
 dTgz1=0;
 dfmg1=0;
 dTgz2=0;
 dfmg2=0;
-dTwew1_0 = 2;
-Tdelay1 = 11500;
+dTwew1_0 = 0;
+Tdelay1 = 3500;
 Tdelay2 = Tdelay1;
 maxstepsize = 5;
 
@@ -182,14 +187,17 @@ maxstepsize = 5;
 figure(1)
 hold on
 plot(t, Twew1, 'm')
+ title('Twew1');
+% hold on;
+% plot(t, Twew2, 'm')
+% hold on;
+ figure(2)
+ %plot(t,Toz);
+% hold on; 
+ plot(t,Top);
+ title('Top');
 
-kp = 0.65*kp;
-ki= kp/Ti;
-[t]=sim('pomieszczenie',czas);
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-figure(2)
-hold on
-plot(t, Twew1, 'm')
+
 
 % figure(figura)
 % title 'pomieszczenie 2 Twew'
