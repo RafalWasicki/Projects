@@ -1,11 +1,11 @@
 ## Repozytorium projektów
 Nazywam się Rafał Wasicki. To repozytorium zawiera moje projekty wykonane w ramach pracy na uczelni oraz działalności w kołach naukowych. 
 Projekty podzieliłem uwględniając język w którym zostały napisane oraz ich zlożoność.
-## Dane kontaktowe
-numer telefonu: +48 796 709 538
 
-adres mailowy: rafal.wasicki@outlook.com
-
+W przypadku pytań proszę o kontakt osobisty pod numerem :
+ +48 796 709 538
+lub poprzez mail:
+rafal.wasicki@outlook.com
 ## Szachy HMI
 Jest to projekt szachów oparty na PLC **Siemens S7-1200/1500** oraz **panelu HMI** serii Comfort. 
 
