@@ -1,6 +1,10 @@
 ## Repozytorium projektów
 Nazywam się Rafał Wasicki. To repozytorium zawiera moje projekty wykonane w ramach pracy na uczelni oraz działalności w kołach naukowych. 
 Projekty podzieliłem uwględniając język w którym zostały napisane oraz ich zlożoność.
+## Dane kontaktowe
+numer telefonu: +48 796 709 538
+
+adres mailowy: rafal.wasicki@outlook.com
 
 ## Szachy HMI
 Jest to projekt szachów oparty na PLC **Siemens S7-1200/1500** oraz **panelu HMI** serii Comfort. 
@@ -54,6 +58,15 @@ Aplikacja została zrealizowania w języku Python i jest umieszczona na tym repo
 ![Wyswietlona chmura punktów w aplikacji](/LIDAR3D/chmura.png)
   
 ![Interfejs aplikacji](/LIDAR3D/interfejs.png)
+
+
+  
+</details>
+<details>
+  <summary>Uruchomienie </summary>
+Z uwagi na duży rozmiar plików przykładowe chmury pomiarów zostały ograniczone do przykładów 'Sala 322' oraz 'Pokój koła'.
+ 
+ Ponadto, z tego samego powodu postanowiono nie udostępniać plików bibliotek wykorzystanych w projekcie. W przypadku chęci uruchomienia aplikacji proszę o kontakt.
 
 
   
