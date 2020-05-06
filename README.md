@@ -16,6 +16,7 @@ Budowa programu:
 
  W ostatnim czasie projekt został rozwinięty o możliwość obsługi partii z dwóch paneli HMI (przygotowania do prezentacji na Dniach Aktywności Studenckiej na Pwr).
  
+
 Dalszy rozwój projektu zakłada wykorzystanie **algorytmu generacji ruchów** w celu stworzenia gry przeciwko AI.
 
 Pierwsze próby implementacji algorytmu generowania ruchu zostały już przeze mnie podjęte.
@@ -25,6 +26,12 @@ Ze względu na ograniczenia sprzętowe, głownie brak możliwości dynamicznej a
   <summary>Zdjęcie aplikacji </summary>
   
 ![Ekran HMI](/Szachy/szachy.png)
+  
+</details>
+<details>
+  <summary>Uruchomienie </summary>
+  
+W celu uruchomienia aplikacji należy otworzyć projekt w oprogramowaniu TIA Portal V14. Aplikacja działa poprawnie przy wykorzystaniu symulatora HMI oraz PLC jak i na rzeczywistych urządzeniach.
   
 </details>
 
@@ -52,7 +59,7 @@ Aplikacja została zrealizowania w języku Python i jest umieszczona na tym repo
   
 </details>
 
-## Pozostałe projekty
+## Pozostałe projekty 
 Projekty w folderach Python oraz Matlab to mniej złożone projekty wykonane w ramach zajęć na uczelni. Obejmują one głównie:
 * algorytmy uczenia sieci neuronowych,
 * algorytmy szeregowania zadań produkcyjnych,
